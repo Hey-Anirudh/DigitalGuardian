@@ -1,70 +1,205 @@
-# Getting Started with Create React App
+# 🛡️ Digital Guardian
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A mobile-first digital security companion — protecting your accounts, subscriptions, digital will, and legacy with zero-trust dual-control verification.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
+![Compliant](https://img.shields.io/badge/RBI-Compliant-blue?style=flat-square)
+![ISO](https://img.shields.io/badge/ISO-27001-blue?style=flat-square)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📱 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Digital Guardian is a React-based mobile security dashboard designed to give individuals complete visibility and control over their digital footprint. It combines real-time threat monitoring, subscription management, and a legally-structured digital will — all protected by a dual-control verification system inspired by zero-trust security principles.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Built as a single-file React artifact (`digital-guardian.jsx`), it runs entirely in the browser with no backend required — all state is managed in-memory.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ✨ Features
 
-### `npm run build`
+### 🔐 Authentication
+- Full **Sign Up / Log In** flow with form validation
+- Password confirmation, show/hide toggle, and error handling
+- **Forgot Password** flow with email confirmation screen
+- Avatar and display name derived dynamically from user input
+- Sign Out returns cleanly to the auth screen
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🏠 Dashboard
+- Personalised greeting using the authenticated user's name
+- Animated **Safety Score** counter (0 → 94)
+- At-a-glance stats: connected accounts, threats blocked, monthly spend
+- Warning banner for pending action items
+- Quick-access grid to all major sections
+- Live account list with session counts, risk levels, and breach flags
+- Contextual security tip card
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ⚖️ Dual-Control Will System
+Implements the **Digital Will Protocol — Dual-Control Verification** pipeline:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Step | Name | Description |
+|------|------|-------------|
+| 1 | **Nominee** | Initiates delete, cancel, or transfer request |
+| 2 | **Dual Alert** | Email + push notification sent to account owner |
+| 3 | **Owner** | Approves or rejects within 48–72 hr window |
+| 4 | **Auto** | No response = auto-executes per pre-authorised will |
+| 5 | **Reject Lock** | Rejection locks nominee out for 7-day cooldown |
+| 6 | **Audit Log** | Full event chain immutably recorded |
 
-### `npm run eject`
+- Horizontally scrollable, colour-coded step cards
+- Tap-to-expand detail panel for each step
+- **Simulate Dual-Control Flow** — animated walkthrough of all 6 steps
+- Trust badge footer: Zero-trust execution · Role-gated control · GDPR-compliant · Immutable audit trail
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📜 Digital Will — Instructions
+- Executor and trustee details
+- Interactive progress pipeline (6-stage lifecycle)
+- Per-account will instructions (expandable cards) covering Google Drive, HDFC Bank, Social Media, Subscriptions, and Crypto
+- Security explanation of the dual-confirmation requirement
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🛡️ Safety Monitor
+- Threat summary: Action Needed / Blocked / Resolved counts
+- Filterable threat list by status and severity
+- Expandable threat detail with geolocation and IP info
+- One-tap **Mark as Resolved** with optimistic UI update
+- Toast notification on resolution
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 💳 Subscription Manager
+- Monthly spend total with yearly forecast
+- Stacked colour bar showing spend breakdown across active subscriptions
+- Filter by All / Active / Paused
+- Per-subscription usage bar with colour-coded utilisation (green → amber → red)
+- Toggle switch to pause / reactivate any subscription
+- AI-style savings tip for underutilised subscriptions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 👤 Profile
+- User avatar (initials-based), name, email, plan tier
+- Stats: safety score, threats blocked, member since
+- Security settings list (2FA, biometrics, notifications, auto-logout, etc.)
+- Sign Out with success toast
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🗂️ Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+digital-guardian.jsx   # Single-file React app — entire application
+README.md              # This file
+```
 
-### Code Splitting
+The app is intentionally self-contained in one file for portability. Key internal sections:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+T {}              — Design system tokens (colours, fonts, spacing)
+DB {}             — Static seed data (accounts, threats, subscriptions, will)
+AppProvider       — Global state context (accounts, threats, subs, notifications)
+AuthScreen        — Login / Sign Up / Forgot Password UI
+Splash            — Animated loading screen post-login
+Dashboard         — Home screen
+DualControlWill   — Dual-control pipeline visualisation
+Will              — Will instructions and lifecycle
+Subscriptions     — Subscription manager
+Threats           — Threat monitor
+Profile           — User settings
+NavBar            — Bottom navigation bar
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Getting Started
 
-### Making a Progressive Web App
+### Prerequisites
+- Node.js 18+
+- A React environment that supports JSX (Vite, Create React App, or any Claude artifact runner)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Run locally with Vite
 
-### Advanced Configuration
+```bash
+# 1. Create a new Vite + React project
+npm create vite@latest digital-guardian -- --template react
+cd digital-guardian
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# 2. Replace src/App.jsx with digital-guardian.jsx
+cp digital-guardian.jsx src/App.jsx
 
-### Deployment
+# 3. Install dependencies and start
+npm install
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Run as a Claude Artifact
+Paste the contents of `digital-guardian.jsx` directly into a Claude artifact (React type). No build step required.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🧰 Tech Stack
+
+| Layer | Choice |
+|-------|--------|
+| Framework | React 18 (hooks only, no class components) |
+| State | `useState`, `useContext`, `useCallback` — no external state library |
+| Styling | Inline styles with a centralised design token object (`T`) |
+| Fonts | Playfair Display · Nunito · IBM Plex Mono (Google Fonts) |
+| Animations | CSS keyframes (`spin`, `slideDown`) + JS `requestAnimationFrame` |
+| Data | In-memory seed data (`DB`) — no backend or API calls |
+| Auth | Simulated with 1.2s async delay — swap for real API |
+
+---
+
+## 🎨 Design System
+
+All visual constants live in the `T` object at the top of the file:
+
+```js
+T.primary      // #1B4F8A — deep navy (trust)
+T.accent       // #2A7D4F — forest green (safe/positive)
+T.warn         // #C96A00 — amber (caution)
+T.danger       // #C0392B — calm red (alert)
+T.gold         // #B8860B — gold (will/legacy)
+T.purple       // #6B4FA8 — purple (subscriptions)
+
+T.display      // 'Playfair Display' — headings
+T.body         // 'Nunito' — body text
+T.mono         // 'IBM Plex Mono' — data/code
+```
+
+---
+
+## 🔒 Security Principles
+
+Digital Guardian is built around four pillars shown in the Dual-Control System:
+
+1. **Zero-trust execution** — no action is taken without explicit, time-bounded verification
+2. **Role-gated action control** — nominee, owner, executor, and trustee have separate scoped permissions
+3. **GDPR compliance** — all data handling respects the right to erasure and data portability
+4. **Immutable audit trail** — every event is cryptographically logged and tamper-proof
+
+> Note: The current version is a UI prototype. In production, replace the simulated `api()` delays with real authenticated API calls, and store all sensitive data encrypted server-side.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Backend integration (Node.js / Supabase)
+- [ ] Real OAuth login (Google, Apple)
+- [ ] Push notification support (FCM)
+- [ ] Biometric authentication (WebAuthn)
+- [ ] Blockchain-backed audit log (on-chain hashing)
+- [ ] PDF export of Digital Will
+- [ ] Trustee / nominee invitation flow via email
+- [ ] Dark mode toggle
+- [ ] Multi-language support (Hindi, Tamil, Telugu)
+
+---
+
+## 📄 License
+
+MIT © 2025. Built with care for digital legacy and security.
+
+---
+
+<div align="center">
+  <sub>🛡️ Your data is encrypted and never sold.</sub>
+</div>
